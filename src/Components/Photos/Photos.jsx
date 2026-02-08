@@ -8,8 +8,8 @@ import "swiper/css/pagination";
 import "swiper/css/autoplay";
 import { ShoppingCart, X, Plus, Minus } from "lucide-react";
 
-import tshirtTape from "./Images/image1.svg";
-import skinnyJeans from "./Images/image2.svg";
+import tshirtTape from "./Images/Image1.svg";
+import skinnyJeans from "./Images/Image2.svg";
 import checkeredShirt from "./Images/image3.svg";
 import stripedTshirt from "./Images/image4.svg";
 import verticalShirt from "./Images/image5.svg";
