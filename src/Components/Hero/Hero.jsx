@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Img1 from "./Images/rasm1.svg";
-import Img2 from "./Images/rasm2.svg";
-import Img3 from "./Images/rasm3.svg";
+import Img2 from "./Images/Rasm2.svg";
+import Img3 from "./Images/rasm3";
 
 const Hero = () => {
   const stats = [
