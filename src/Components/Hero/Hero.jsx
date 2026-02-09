@@ -1,22 +1,44 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
+import { useTranslation } from "react-i18next";
 import Img1 from "./Images/rasm1.svg";
 import Img2 from "./Images/Rasm2.svg";
 import Img3 from "./Images/rasm3.svg";
 
+// 1. StarIcon komponentini asosiy funksiyadan tashqarida e'lon qilamiz
+const StarIcon = ({ color = "white" }) => (
+  <svg
+    width="100%"
+    height="100%"
+    viewBox="0 0 104 104"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M52 0L58.1778 45.8222L104 52L58.1778 58.1778L52 104L45.8222 58.1778L0 52L45.8222 45.8222L52 0Z"
+      fill={color}
+      fillOpacity="0.4"
+    />
+  </svg>
+);
+
 const Hero = () => {
-  const stats = [
-    { label: "International Brands", value: 200 },
-    { label: "High-Quality Products", value: 2000 },
-    { label: "Happy Customers", value: 30000 },
-  ];
+  const { t } = useTranslation();
+
+  // 2. Stats ma'lumotlarini useMemo ichiga olamiz (infinite loop oldini olish uchun)
+  const stats = useMemo(() => [
+    { label: t("hero.stats.brands"), value: 200 },
+    { label: t("hero.stats.products"), value: 2000 },
+    { label: t("hero.stats.customers"), value: 30000 },
+  ], [t]);
 
   const [counts, setCounts] = useState(stats.map(() => 0));
   const [animate, setAnimate] = useState(false);
 
   useEffect(() => {
-    // Statistika animatsiyasi
+    setAnimate(true);
     const duration = 2000;
     const intervalTime = 30;
+    
     const increments = stats.map(stat =>
       Math.ceil(stat.value / (duration / intervalTime))
     );
@@ -31,42 +53,46 @@ const Hero = () => {
       );
     }, intervalTime);
 
-    // Hero chiqib kelish effektini faollashtirish
-    setAnimate(true);
-
     return () => clearInterval(interval);
-  }, []);
+  }, [stats]);
 
   return (
-    <section className="bg-[#F2F0F1] w-full min-h-screen flex items-center">
-      <div className="max-w-[1600px] mx-auto px-6 sm:px-10 lg:px-16 flex flex-col md:flex-row items-center justify-between py-14">
+    <section className="w-full bg-[#0A0A0A] text-white pt-16 overflow-hidden min-h-screen flex items-center">
+      <div className="max-w-[1600px] mx-auto px-6 sm:px-10 lg:px-16 flex flex-col md:flex-row items-center justify-between py-16 w-full">
 
         {/* Matn qismi */}
         <div
-          className={`w-full md:w-1/2 flex flex-col justify-center z-10 transition-all duration-1000 ${animate ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"
-            }`}
+          className={`w-full md:w-1/2 flex flex-col justify-center z-10 transition-all duration-1000 ${
+            animate ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"
+          }`}
         >
-          <h1 className="text-[36px] sm:text-[48px] md:text-[64px] lg:text-[72px] font-black leading-[1.1] text-black mb-6 tracking-tighter">
-            FIND CLOTHES <br />
-            THAT MATCHES <br />
-            YOUR STYLE
+          <h1 className="text-[40px] sm:text-[50px] md:text-[60px] lg:text-[72px] font-extrabold leading-[1.1] text-white mb-6 tracking-tight uppercase">
+            {t("hero.title")}
           </h1>
 
-          <p className="text-gray-600 text-sm sm:text-base lg:text-lg mb-10 max-w-[650px]">
-            Browse through our diverse range of meticulously crafted garments,
-            designed to bring out your individuality and cater to your sense of style.
+          <p className="text-gray-400 text-base sm:text-lg lg:text-xl mb-10 max-w-[550px] leading-relaxed">
+            {t("hero.description")}
           </p>
 
-          <button className="w-full md:w-auto bg-black text-white px-16 py-4 rounded-full font-medium hover:bg-black/80 transition-all mb-14">
-            Shop Now
-          </button>
+          <div className="flex flex-col sm:flex-row gap-4 mb-14">
+            <button className="bg-white text-black px-14 py-4 rounded-full font-bold shadow-[0_0_30px_rgba(255,255,255,0.15)] hover:bg-gray-200 transform transition-all active:scale-95 text-lg">
+              {t("hero.button")}
+            </button>
+          </div>
 
-          {/* Statistika */}
-          <div className="flex flex-wrap gap-10 md:gap-14">
+          {/* Statistika - Glassmorphism style */}
+          <div className="flex flex-row flex-wrap md:flex-nowrap gap-4 md:gap-8">
             {stats.map((stat, idx) => (
-              <div key={idx}>
-                <h3 className="text-2xl md:text-4xl lg:text-5xl font-bold">{counts[idx].toLocaleString()}</h3>
-                <p className="text-gray-500 text-xs md:text-sm lg:text-base">{stat.label}</p>
+              <div
+                key={idx}
+                className="bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl px-6 py-4 flex-1 min-w-[120px]"
+              >
+                <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-1">
+                  {counts[idx].toLocaleString()}+
+                </h3>
+                <p className="text-gray-500 text-[10px] md:text-xs uppercase tracking-[0.2em] font-semibold">
+                  {stat.label}
+                </p>
               </div>
             ))}
           </div>
@@ -74,36 +100,38 @@ const Hero = () => {
 
         {/* Rasm qismi */}
         <div
-          className={`w-full md:w-1/2 relative flex justify-center md:justify-end mt-10 md:mt-0 transition-all duration-1000 ${animate ? "opacity-100 translate-x-0" : "opacity-0 translate-x-10"
-            }`}
+          className={`w-full md:w-1/2 relative flex justify-center md:justify-end mt-16 md:mt-0 transition-all duration-[1200ms] delay-300 ${
+            animate ? "opacity-100 scale-100" : "opacity-0 scale-95"
+          }`}
         >
-          <div className="relative w-full max-w-[700px] flex items-center justify-center">
+          <div className="relative w-full max-w-[550px] flex items-center justify-center">
+            
+            {/* Orqa fondagi yorug'lik effekti */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-white/10 blur-[120px] rounded-full" />
 
             {/* Asosiy rasm */}
             <img
               src={Img1}
-              alt="Main Model"
-              className="relative left-20 z-10 w-[320px] md:w-[420px] lg:w-[520px] h-auto object-contain"
+              alt="Model"
+              className="relative z-10 w-full h-auto object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.8)]"
             />
 
-
-            {/* Chap pastdagi yulduz */}
+            {/* Animatsiyali yulduzlar */}
             <img
               src={Img2}
               alt="Star 1"
-              className="absolute w-16 md:w-24 bottom-12 left-6 md:left-0 animate-pulse z-20"
+              className="absolute w-12 md:w-20 bottom-10 -left-5 animate-pulse z-20 invert brightness-150 shadow-white"
             />
 
-            {/* O'ng yuqoridagi yulduz */}
             <img
               src={Img3}
               alt="Star 2"
-              className="absolute w-24 md:w-32 top-6 right-6 md:right-0 animate-pulse delay-700 z-20"
+              className="absolute w-20 md:w-28 -top-5 right-0 animate-[bounce_4s_infinite] z-20 invert brightness-200"
             />
 
-            {/* Qo'shimcha yulduz */}
-            <div className="absolute w-12 md:w-16 bottom-36 right-12 animate-pulse delay-300 opacity-70">
-              <StarIcon />
+            {/* SVG StarIcon qo'shildi */}
+            <div className="absolute w-12 md:w-16 top-1/2 -right-6 animate-pulse delay-700 opacity-50 z-20">
+              <StarIcon color="white" />
             </div>
           </div>
         </div>
@@ -111,11 +139,5 @@ const Hero = () => {
     </section>
   );
 };
-
-const StarIcon = () => (
-  <svg width="100%" height="100%" viewBox="0 0 104 104" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M52 0L58.1778 45.8222L104 52L58.1778 58.1778L52 104L45.8222 58.1778L0 52L45.8222 45.8222L52 0Z" fill="black" fillOpacity="0.2" />
-  </svg>
-);
 
 export default Hero;

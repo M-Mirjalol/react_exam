@@ -1,0 +1,73 @@
+{
+  "header": {
+    "shop": "Do‘kon",
+    "sale": "Chegirmalar",
+    "newArrivals": "Yangi mahsulotlar",
+    "brands": "Brendlar",
+    "search": "Mahsulot qidirish..."
+  },
+    "hero": {
+    "title": "Kiyimlarni toping\nsizning uslubingizga mos",
+    "description": "Diqqat bilan ishlab chiqilgan kiyimlarimiz assortimenti bilan tanishing, ular sizning individualligingizni ko‘rsatadi va uslubingizga mos keladi.",
+    "button": "Hozir xarid qil",
+    "stats": {
+      "brands": "Xalqaro brendlar",
+      "products": "Yuoqori sifatli mahsulotlar",
+      "customers": "Baxtli mijozlar"
+    }
+  },
+    "photos": {
+    "newArrivals": "Yangi mahsulotlar",
+    "topSelling": "Eng ko‘p sotiladiganlar",
+    "addToCart": "Savatga qo‘shish",
+    "cartTitle": "Savat ({{count}})",
+    "cartEmpty": "Savat bo‘sh",
+    "total": "Jami",
+    "orderNow": "Buyurtma berish",
+    "orderAlert": "Buyurtma berildi! Jami: ${{total}}"
+  },
+    "browse": {
+    "title": "KIYIM USLUBLARI BO'YICHA KO'RING",
+    "subtitle": "Har bir vaziyat uchun mukammal kiyimni tanlang",
+    "casualTitle": "Casual",
+    "casualDesc": "Har kuni kiyish uchun qulay va erkin kiyimlar",
+    "formalTitle": "Formal",
+    "formalDesc": "Rasmiy tadbirlar uchun elegant kiyimlar",
+    "partyTitle": "Party",
+    "partyDesc": "Partiyalar va tadbirlar uchun trendy kiyimlar",
+    "gymTitle": "Gym",
+    "gymDesc": "Mashqlar va sport uchun qulay kiyimlar",
+    "explore": "Ko'rib chiqish",
+    "footerText": "Bizning kiyimlarimiz har bir uslub va vaziyatga mos"
+  },
+  
+  "footer": {
+    "newsletterTitle": "So'nggi takliflarimizdan xabardor bo'ling",
+    "emailPlaceholder": "Email manzilingizni kiriting",
+    "subscribe": "Yangiliklarga obuna bo‘lish",
+    "brandDesc": "Bizda sizning uslubingizga mos kiyimlar bor, ulardan faxrlanishingiz mumkin. Ayollar va erkaklar uchun.",
+    "company": "Kompaniya",
+    "about": "Haqida",
+    "features": "SHOP.CO xususiyatlari",
+    "works": "Ishlar",
+    "career": "Karyera",
+    "help": "Yordam",
+    "support": "Mijozlarni qo‘llab-quvvatlash",
+    "delivery": "Yetkazib berish tafsilotlari",
+    "terms": "Shartlar va qoidalar",
+    "privacy": "Maxfiylik siyosati",
+    "faq": "Savol-javob",
+    "account": "Hisob",
+    "manage": "Yetkazib berishni boshqarish",
+    "orders": "Buyurtmalar",
+    "payments": "To‘lovlar",
+    "resources": "Resurslar",
+    "ebooks": "Bepul elektron kitoblar",
+    "tutorial": "Rivojlanish bo‘yicha darslik",
+    "blog": "Qanday qilish - Blog",
+    "youtube": "Youtube ro‘yxati",
+    "copyright": "Shop.co © 2000-2024, Barcha huquqlar himoyalangan"
+  }
+}
+
+

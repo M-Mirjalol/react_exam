@@ -1,0 +1,75 @@
+{
+  "header": {
+    "shop": "Shop",
+    "sale": "On Sale",
+    "newArrivals": "New Arrivals",
+    "brands": "Brands",
+    "search": "Search for products..."
+  },
+  
+  "hero": {
+    "title": "FIND CLOTHES\nTHAT MATCHES\nYOUR STYLE",
+    "description": "Browse through our diverse range of meticulously crafted garments, designed to bring out your individuality and cater to your sense of style.",
+    "button": "Shop Now",
+    "stats": {
+      "brands": "International Brands",
+      "products": "High-Quality Products",
+      "customers": "Happy Customers"
+    }
+  },
+    "photos": {
+    "newArrivals": "New Arrivals",
+    "topSelling": "Top Selling",
+    "addToCart": "Add to Cart",
+    "cartTitle": "Shopping Cart ({{count}})",
+    "cartEmpty": "Your cart is empty",
+    "total": "Total",
+    "orderNow": "Order Now",
+    "orderAlert": "Order placed! Total: ${{total}}"
+  },
+  "browse": {
+    "title": "BROWSE BY DRESS STYLE",
+    "subtitle": "Discover the perfect outfit for every occasion",
+    "casualTitle": "Casual",
+    "casualDesc": "Comfortable and relaxed outfits for everyday wear",
+    "formalTitle": "Formal",
+    "formalDesc": "Elegant and professional attire for formal occasions",
+    "partyTitle": "Party",
+    "partyDesc": "Trendy and stylish outfits for parties and events",
+    "gymTitle": "Gym",
+    "gymDesc": "Sporty and comfortable wear for workouts and gym",
+    "explore": "Explore",
+    "footerText": "Our clothing options are tailored for every style and occasion"
+  },
+  
+  "footer": {
+    "newsletterTitle": "Stay up to date about our latest offers",
+    "emailPlaceholder": "Enter your email address",
+    "subscribe": "Subscribe to Newsletter",
+    "brandDesc": "We have clothes that suit your style and which you're proud to wear. From women to men.",
+    "company": "Company",
+    "about": "About",
+    "features": "Features of SHOP.CO",
+    "works": "Works",
+    "career": "Career",
+    "help": "Help",
+    "support": "Customer Support",
+    "delivery": "Delivery Details",
+    "terms": "Terms & Conditions",
+    "privacy": "Privacy Policy",
+    "faq": "FAQ",
+    "account": "Account",
+    "manage": "Manage Deliveries",
+    "orders": "Orders",
+    "payments": "Payments",
+    "resources": "Resources",
+    "ebooks": "Free eBooks",
+    "tutorial": "Development Tutorial",
+    "blog": "How to - Blog",
+    "youtube": "Youtube Playlist",
+    "copyright": "Shop.co © 2000-2024, All Rights Reserved"
+  }
+}
+
+
+

@@ -1,133 +1,69 @@
-// Header.jsx
-import React, { useState, useEffect } from "react";
-import Logojon from "./Images/Logo.svg";
-import { AiOutlineShoppingCart } from "react-icons/ai";
+import React, { useEffect, useState } from "react";
+import { AiOutlineShoppingCart, AiOutlineSearch } from "react-icons/ai";
+import { useTranslation } from "react-i18next";
+import Logo from "./Images/Logo.svg";
 
 const Header = () => {
-  const [isAnnouncementVisible, setIsAnnouncementVisible] = useState(true);
-  const [isScrolled, setIsScrolled] = useState(false);
+  const { t, i18n } = useTranslation();
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 10);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const onScroll = () => setScrolled(window.scrollY > 10);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
-    <>
-      {/* Announcement Bar */}
-      <div
-        id="announcement-bar"
-        className={`sticky top-0 z-50 bg-black text-white py-2 transition-all duration-500 ${
-          !isAnnouncementVisible || isScrolled
-            ? "-translate-y-16 opacity-0"
-            : "translate-y-0 opacity-100"
-        }`}
-      >
-        <div
-          id="announcement-container"
-          className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between"
-        >
-          <div
-            id="announcement-text-wrapper"
-            className="flex items-center justify-center flex-1 gap-2 text-sm"
-          >
-            <span id="announcement-title" className="font-bold">
-              FLASH SALE:
-            </span>
-            <span id="announcement-description">
-              50% OFF everything. Limited time!
-            </span>
-          </div>
+   <header
+  className={`sticky top-0 z-50 bg-white transition-all duration-300 border-b
+  ${scrolled ? "py-3 shadow-lg" : "py-5"}`}
+>
+  <div className="max-w-[1250px] mx-auto px-4 flex items-center justify-between gap-6">
+    
+    {/* LOGO */}
+    <img src={Logo} alt="SHOP.CO" className="h-8 cursor-pointer" />
 
-          <button
-            id="announcement-close-btn"
-            onClick={() => setIsAnnouncementVisible(false)}
-            className="text-white hover:text-gray-300"
-          >
-            ✕
-          </button>
-        </div>
+    {/* NAV */}
+    <nav className="hidden lg:flex items-center gap-8 font-medium text-gray-700">
+      <div className="flex items-center gap-1 cursor-pointer hover:text-black transition-colors duration-200">
+        {t("header.shop")} 
       </div>
+      <a href="#" className="hover:text-black transition-colors">{t("header.sale")}</a>
+      <a href="#" className="hover:text-black transition-colors">{t("header.newArrivals")}</a>
+      <a href="#" className="hover:text-black transition-colors">{t("header.brands")}</a>
+    </nav>
 
-      {/* Header */}
-      <header
-        id="main-header"
-        className={`sticky top-0 z-40 bg-white border-b shadow-md transition-all duration-500 ${
-          isScrolled ? "py-2 md:py-3" : "py-4 md:py-5"
-        }`}
+    {/* SEARCH */}
+    <div className="flex-1 hidden md:flex justify-center">
+      <div className="relative w-full max-w-md">
+        <AiOutlineSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-lg" />
+        <input
+          type="text"
+          placeholder={t("header.search")}
+          className="w-full pl-11 pr-4 py-2.5 rounded-full bg-gray-100 focus:bg-white border focus:border-black outline-none shadow-sm transition-all"
+        />
+      </div>
+    </div>
+
+    {/* RIGHT ICONS */}
+    <div className="flex items-center gap-4 md:gap-6">
+      {/* LANGUAGE */}
+      <select
+        onChange={(e) => i18n.changeLanguage(e.target.value)}
+        className="text-sm border border-gray-300 rounded-md px-3 py-1 cursor-pointer hover:border-black transition"
       >
-        <div
-          id="header-container"
-          className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between"
-        >
-          {/* Logo */}
-          <div id="logo-wrapper">
-            <img
-              id="header-logo"
-              src={Logojon}
-              alt="SHOP.CO"
-              className="h-8 w-auto ml-[25px]"
-            />
-          </div>
+        <option value="en">EN</option>
+        <option value="uz">UZ</option>
+        <option value="ru">RU</option>
+      </select>
 
-          {/* Navigation */}
-          <nav
-            id="header-nav"
-            className="hidden md:flex items-center space-x-8"
-          >
-            <a
-              id="nav-shop"
-              href="#"
-              className="text-gray-800 font-medium hover:text-black flex items-center"
-            >
-              Shop <span id="nav-shop-arrow" className="ml-1">▼</span>
-            </a>
-
-            <a
-              id="nav-sale"
-              href="#"
-              className="text-gray-800 font-medium hover:text-black"
-            >
-              On Sale
-            </a>
-
-            <a
-              id="nav-new-arrivals"
-              href="#"
-              className="text-gray-800 font-medium hover:text-black"
-            >
-              New Arrivals
-            </a>
-
-            <a
-              id="nav-brands"
-              href="#"
-              className="text-gray-800 font-medium hover:text-black"
-            >
-              Brands
-            </a>
-          </nav>
-
-          {/* Cart Icon */}
-          <div id="header-icons" className="flex items-center space-x-6">
-            <a href="#cart" id="cart-link" className="relative">
-              <AiOutlineShoppingCart
-                id="cart-icon"
-                className="h-6 w-6 text-gray-700"
-              />
-              <span
-                id="cart-count"
-                className="absolute -top-1 -right-1 bg-black text-white text-xs rounded-full h-4 w-4 flex items-center justify-center"
-              >
-                3
-              </span>
-            </a>
-          </div>
-        </div>
-      </header>
-    </>
+      {/* CART */}
+      <div className="relative cursor-pointer">
+        <AiOutlineShoppingCart className="text-2xl text-gray-700 hover:text-black transition" />
+      </div>
+    </div>
+  </div>
+</header>
   );
 };
-
 export default Header;
