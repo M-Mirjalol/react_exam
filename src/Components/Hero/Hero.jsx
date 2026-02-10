@@ -4,7 +4,7 @@ import Img1 from "./Images/rasm1.svg";
 import Img2 from "./Images/Rasm2.svg";
 import Img3 from "./Images/rasm3.svg";
 
-// 1. StarIcon komponentini asosiy funksiyadan tashqarida e'lon qilamiz
+// StarIcon komponenti
 const StarIcon = ({ color = "white" }) => (
   <svg
     width="100%"
@@ -24,7 +24,6 @@ const StarIcon = ({ color = "white" }) => (
 const Hero = () => {
   const { t } = useTranslation();
 
-  // 2. Stats ma'lumotlarini useMemo ichiga olamiz (infinite loop oldini olish uchun)
   const stats = useMemo(() => [
     { label: t("hero.stats.brands"), value: 200 },
     { label: t("hero.stats.products"), value: 2000 },
@@ -38,7 +37,6 @@ const Hero = () => {
     setAnimate(true);
     const duration = 2000;
     const intervalTime = 30;
-    
     const increments = stats.map(stat =>
       Math.ceil(stat.value / (duration / intervalTime))
     );
@@ -66,31 +64,31 @@ const Hero = () => {
             animate ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"
           }`}
         >
-          <h1 className="text-[40px] sm:text-[50px] md:text-[60px] lg:text-[72px] font-extrabold leading-[1.1] text-white mb-6 tracking-tight uppercase">
+          <h1 className="text-[30px] sm:text-[40px] md:text-[60px] lg:text-[72px] font-extrabold leading-[1.1] text-white mb-6 tracking-tight uppercase">
             {t("hero.title")}
           </h1>
 
-          <p className="text-gray-400 text-base sm:text-lg lg:text-xl mb-10 max-w-[550px] leading-relaxed">
+          <p className="text-gray-400 text-sm sm:text-base md:text-lg lg:text-xl mb-10 max-w-full sm:max-w-[550px] leading-relaxed">
             {t("hero.description")}
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 mb-14">
-            <button className="bg-white text-black px-14 py-4 rounded-full font-bold shadow-[0_0_30px_rgba(255,255,255,0.15)] hover:bg-gray-200 transform transition-all active:scale-95 text-lg">
+            <button className="bg-white text-black px-10 sm:px-14 py-3 sm:py-4 rounded-full font-bold shadow-[0_0_30px_rgba(255,255,255,0.15)] hover:bg-gray-200 transform transition-all active:scale-95 text-sm sm:text-lg">
               {t("hero.button")}
             </button>
           </div>
 
-          {/* Statistika - Glassmorphism style */}
-          <div className="flex flex-row flex-wrap md:flex-nowrap gap-4 md:gap-8">
+          {/* Statistika */}
+          <div className="flex flex-wrap md:flex-nowrap gap-3 sm:gap-6">
             {stats.map((stat, idx) => (
               <div
                 key={idx}
-                className="bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl px-6 py-4 flex-1 min-w-[120px]"
+                className="bg-white/5 border border-white/10 backdrop-blur-md rounded-2xl px-4 sm:px-6 py-3 sm:py-4 flex-1 min-w-[100px] sm:min-w-[120px]"
               >
-                <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-1">
+                <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-1">
                   {counts[idx].toLocaleString()}+
                 </h3>
-                <p className="text-gray-500 text-[10px] md:text-xs uppercase tracking-[0.2em] font-semibold">
+                <p className="text-gray-400 text-[8px] sm:text-[10px] md:text-xs uppercase tracking-[0.2em] font-semibold">
                   {stat.label}
                 </p>
               </div>
@@ -100,39 +98,40 @@ const Hero = () => {
 
         {/* Rasm qismi */}
         <div
-          className={`w-full md:w-1/2 relative flex justify-center md:justify-end mt-16 md:mt-0 transition-all duration-[1200ms] delay-300 ${
+          className={`w-full md:w-1/2 relative flex justify-center md:justify-end mt-12 md:mt-0 transition-all duration-[1200ms] delay-300 ${
             animate ? "opacity-100 scale-100" : "opacity-0 scale-95"
           }`}
         >
-          <div className="relative w-full max-w-[550px] flex items-center justify-center">
-            
-            {/* Orqa fondagi yorug'lik effekti */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-white/10 blur-[120px] rounded-full" />
+          <div className="relative w-full max-w-[500px] sm:max-w-[550px] flex items-center justify-center">
+
+            {/* Orqa fondagi yorug'lik */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200px] sm:w-[300px] h-[200px] sm:h-[300px] bg-white/10 blur-[80px] sm:blur-[120px] rounded-full" />
 
             {/* Asosiy rasm */}
             <img
               src={Img1}
               alt="Model"
-              className="relative z-10 w-full h-auto object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.8)]"
+              className="relative z-10 w-[250px] sm:w-[350px] md:w-[420px] lg:w-[500px] h-auto object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.8)]"
             />
 
             {/* Animatsiyali yulduzlar */}
             <img
               src={Img2}
               alt="Star 1"
-              className="absolute w-12 md:w-20 bottom-10 -left-5 animate-pulse z-20 invert brightness-150 shadow-white"
+              className="absolute w-8 sm:w-12 md:w-16 bottom-8 -left-4 animate-pulse z-20 invert brightness-150 shadow-white"
             />
 
             <img
               src={Img3}
               alt="Star 2"
-              className="absolute w-20 md:w-28 -top-5 right-0 animate-[bounce_4s_infinite] z-20 invert brightness-200"
+              className="absolute w-16 sm:w-20 md:w-28 -top-4 right-0 animate-[bounce_4s_infinite] z-20 invert brightness-200"
             />
 
-            {/* SVG StarIcon qo'shildi */}
-            <div className="absolute w-12 md:w-16 top-1/2 -right-6 animate-pulse delay-700 opacity-50 z-20">
+            {/* SVG StarIcon */}
+            <div className="absolute w-10 sm:w-12 md:w-16 top-1/2 -right-6 animate-pulse delay-700 opacity-50 z-20">
               <StarIcon color="white" />
             </div>
+
           </div>
         </div>
       </div>

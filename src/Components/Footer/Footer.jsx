@@ -63,11 +63,11 @@ const Footer = () => {
   ];
 
   const paymentLogos = [
-    "https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg",
-    "https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg",
     "https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg",
-    "https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg",
+    "https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg",
     "https://logo.svgcdn.com/logos/google-pay.svg",
+    "https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg",
+    "https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg",
   ];
 
   return (
@@ -76,25 +76,25 @@ const Footer = () => {
       <div className="max-w-6xl mx-auto px-4 mb-12">
         <div
           data-aos="zoom-in"
-          className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-[40px] p-6 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8 shadow-2xl"
+          className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-[40px] p-6 md:p-12 flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8 shadow-2xl"
         >
           <h2 className="text-white font-extrabold text-2xl md:text-4xl leading-tight text-center md:text-left uppercase">
             {t("footer.newsletterTitle")}
           </h2>
 
-          <div className="w-full md:w-[420px] flex flex-col gap-4">
-            <div className="relative w-full">
+          <div className="w-full md:w-[420px] flex flex-col sm:flex-row gap-4 mt-4 md:mt-0">
+            <div className="relative flex-1">
               <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-200 text-lg">
                 ✉
               </span>
               <input
                 type="email"
                 placeholder={t("footer.emailPlaceholder")}
-                className="w-full bg-white rounded-full py-3 pl-12 pr-4 outline-none border border-gray-200 focus:ring-2 focus:ring-blue-400 text-black"
+                className="w-full bg-white rounded-full py-3 pl-12 pr-4 outline-none border border-gray-200 focus:ring-2 focus:ring-blue-400 text-black transition"
               />
             </div>
 
-            <button className="w-full bg-white rounded-full py-3 font-semibold text-blue-600 hover:bg-gray-100 transition">
+            <button className="w-full sm:w-auto bg-white rounded-full py-3 px-6 font-semibold text-blue-600 hover:bg-gray-100 transition transform active:scale-95">
               {t("footer.subscribe")}
             </button>
           </div>
@@ -103,9 +103,12 @@ const Footer = () => {
 
       {/* Footer Main */}
       <div className="max-w-6xl mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-10">
           {/* Brand Section */}
-          <div data-aos="fade-up" className="md:col-span-1 space-y-4">
+          <div
+            data-aos="fade-up"
+            className="md:col-span-1 space-y-4 flex flex-col items-start"
+          >
             <h1 className="text-3xl font-extrabold">SHOP.CO</h1>
             <p className="text-gray-300 text-sm leading-relaxed">
               {t("footer.brandDesc")}
@@ -115,7 +118,7 @@ const Footer = () => {
                 <a
                   key={i}
                   href={icon.link}
-                  className="hover:scale-125 transition transform duration-300"
+                  className="hover:scale-125 hover:text-blue-400 transition transform duration-300"
                 >
                   {icon.icon}
                 </a>
@@ -131,7 +134,7 @@ const Footer = () => {
                 {col.items.map((item, idx) => (
                   <li
                     key={idx}
-                    className="hover:text-white cursor-pointer transition"
+                    className="hover:text-white hover:underline hover:underline-offset-4 cursor-pointer transition-all duration-300"
                   >
                     {item}
                   </li>
@@ -153,7 +156,7 @@ const Footer = () => {
                 key={i}
                 src={logo}
                 alt="payment"
-                className="h-8 object-contain hover:scale-110 transition duration-300"
+                className="h-8 object-contain hover:scale-110 hover:opacity-80 transition duration-300"
               />
             ))}
           </div>
